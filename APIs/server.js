@@ -44,7 +44,7 @@ const columns = [
     },
 ]
 
-
+//this data just for demo and I decided to make it simple and didn't use database (mongodb or sql)
 const data = {
     Product: ["Diskette", "Memory Card", "HDTV Tuner", "Flat Panle Graphics Monitor", "Digital Camera", "Minitower Speaker"],
     Year: ["2010", "2011", "2012", "2013", "2014", "2015"],
@@ -53,8 +53,6 @@ const data = {
     'Units sold': [1000, 2000, 2300, 12000, 20000, 5030],
     Cost: [333.08, 7.07, 10.77, 194.76, 13.18, 143.3]
 }
-
-
 
 
 

@@ -17,8 +17,8 @@
   <div class="row">
     <div class="col-12 row form">
       <div class="col-12">
-        <label for="div1">Dimension</label>
-        <div id="div1" (drop)="dropDimension($event)" #dim (dragover)="allowDrop($event)"></div>
+        <label for="div1" style="color: brown;">Dimension</label>
+        <div id="div1" style="color: brown;" (drop)="dropDimension($event)" #dim (dragover)="allowDrop($event)"></div>
         <button class="btn mt-3 p-2 btn-primary" (click)='clear(dim,"dimension")'>Clear</button>
       </div>
       <div class="col-12">

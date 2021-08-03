@@ -67,6 +67,9 @@
   font-weight: 400;
   white-space: nowrap;
 }
+.sidebar .nav-links li a .dimension {
+  color: brown;
+}
 .sidebar .nav-links .log_out {
   position: absolute;
   bottom: 0;
