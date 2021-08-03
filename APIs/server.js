@@ -59,16 +59,16 @@ function getColumns(req, res) {
     res.json(columns);
 }
 function getData(req, res) {
-    const { measure } = req.body;
+    const { measures } = req.body;
     const { dimension } = req.body
-
+    console.log(measures);
     let result = [
         {
             "name": dimension,
             "values": data[dimension]
         }, {
-            "name": measure[0],
-            "values": data[measure[0]]
+            "name": measures[0],
+            "values": data[measures[0]]
         }
     ]
     res.json(result);

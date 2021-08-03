@@ -1,1 +1,35 @@
-<app-plotter></app-plotter>
+<div class="sidebar">
+  <div class="logo-details">
+    <i class='bx bxl-c-plus-plus'></i>
+    <span class="logo_name">Plotter</span>
+  </div>
+  <ul class="nav-links">
+    <li *ngFor="let col of columns; let i=index">
+      <a [id]='"listItem"+i'>
+        <i class='bx bx-grid-alt'></i>
+        <span [id]="'drag'+i" draggable="true" (dragstart)="drag($event)"
+          [class]="col.function+' links_name'">{{col.name}}</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<section class="home-section">
+  <div class="row">
+    <div class="col-12 row form">
+      <div class="col-12">
+        <label for="div1">Dimension</label>
+        <div id="div1" (drop)="dropDimension($event)" #dim (dragover)="allowDrop($event)"></div>
+        <button class="btn mt-3 p-2 btn-primary" (click)='clear(dim,"dimension")'>Clear</button>
+      </div>
+      <div class="col-12">
+        <label for="div2">Measure</label>
+        <div id="div2" (drop)="dropMeasure($event)" #measure (dragover)="allowDrop($event)"></div>
+        <button class="btn mt-3 p-2 btn-primary" (click)='clear(measure,"measure")'>Clear</button>
+      </div>
+    </div>
+    <hr>
+    <div class="col-12">
+      <app-plotter *ngIf="measure && dimension" [dimensions]='dimension' [measure]='measures'></app-plotter>
+    </div>
+  </div>
+</section>

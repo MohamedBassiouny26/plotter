@@ -38,17 +38,17 @@ export class PlotterComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.canvas = this.mychart.nativeElement;
     this.ctx = this.canvas.getContext('2d');
-
+    console.log(this.measure, this.dimensions)
     new Chart(this.ctx, {
       type: 'line',
       data: {
         datasets: [{
-          label: this.measure.name,
-          data: this.measure.values,
+          label: this.measure?.name,
+          data: this.measure?.values,
           borderColor: "#007ee7",
         },
         ],
-        labels: this.dimensions.values
+        labels: this.dimensions?.values
       }
     });
   }
