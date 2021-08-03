@@ -47,6 +47,10 @@ const columns = [
 
 const data = {
     Product: ["Diskette", "Memory Card", "HDTV Tuner", "Flat Panle Graphics Monitor", "Digital Camera", "Minitower Speaker"],
+    Year: ["2010", "2011", "2012", "2013", "2014", "2015"],
+    Country: ["Egypt", "Germany", "USA", "England", "Italy", "Saudi Arabia"],
+    Revenue: [9000, 10000, 7000, 80000, 3400, 5500],
+    'Units sold': [1000, 2000, 2300, 12000, 20000, 5030],
     Cost: [333.08, 7.07, 10.77, 194.76, 13.18, 143.3]
 }
 
@@ -61,7 +65,6 @@ function getColumns(req, res) {
 function getData(req, res) {
     const { measures } = req.body;
     const { dimension } = req.body
-    console.log(measures);
     let result = [
         {
             "name": dimension,

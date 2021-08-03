@@ -1,3 +1,11 @@
-<div style="width:100%;">
-  <canvas id="myChart" width="700" height="250" #mychart></canvas>
+<div style="width:100%; " class="row">
+  <div class="col-1 y-axis">
+    <p class="text-primary" style="margin: auto;">{{measure?.name}}</p>
+  </div>
+  <div class="col-11 m-3">
+    <canvas id="myChart" width="700" height="250" #mychart></canvas>
+  </div>
+</div>
+<div class="x-axis">
+  <p class="text-danger">{{dimensions?.name}}</p>
 </div>

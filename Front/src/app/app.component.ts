@@ -52,6 +52,7 @@ export class AppComponent implements OnInit {
     if (a !== null)
       a.appendChild(span);
     dataType == 'dimension' ? this.dimension = '' : this.measures = '';
+    console.log(this.measures)
   }
   getDataRequest() {
     let dim = document.getElementById('div1')?.innerText
