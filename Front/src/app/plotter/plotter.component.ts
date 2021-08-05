@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
 
 
@@ -7,50 +7,49 @@ import { Chart } from 'chart.js';
   templateUrl: './plotter.component.html',
   styleUrls: ['./plotter.component.css']
 })
-export class PlotterComponent implements OnInit, AfterViewInit {
+export class PlotterComponent implements OnInit, AfterViewInit, OnChanges {
   canvas: any;
   ctx: any;
   @ViewChild('mychart') mychart: any;
-  @Input() dataName!: string;
+  measuresData: any = []
   @Input() dimensions!: any;
-  @Input() measure!: any;
+  @Input() measures: any = [];
+  chart: any;
+  colors: any = {
+    0: "#007ee7",
+    1: "red",
+    2: "green"
+  }
   constructor() { }
 
-  // public lineChartData: ChartDataSets[] = [
-  //   { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-  // ];
-  // public lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  // public lineChartOptions: (ChartOptions & { annotation?: any }) = {
-  //   responsive: true,
-  // };
-  // public lineChartColors: Color[] = [
-  //   {
-  //     borderColor: 'black',
-  //     backgroundColor: 'rgba(255,0,0,0.3)',
-  //   },
-  // ];
-  // public lineChartLegend = true;
-  // public lineChartType = 'line';
-  // public lineChartPlugins = [];
 
   ngOnInit() {
+  }
+  ngOnChanges() {
+    this.measuresData = []
+    this.measures.forEach((elem: any, i: number = 0) => {
+      this.measuresData.push({
+        label: elem.name,
+        data: elem.values,
+        borderColor: this.colors[i]
+      })
+    });
+    this.chart ? (this.chart.data.datasets = this.measuresData) && this.chart.update() : ''
+
   }
   ngAfterViewInit() {
     this.canvas = this.mychart.nativeElement;
     this.ctx = this.canvas.getContext('2d');
-    console.log(this.measure, this.dimensions)
-    new Chart(this.ctx, {
+
+
+    this.chart = new Chart(this.ctx, {
       type: 'line',
       data: {
-        datasets: [{
-          label: this.measure?.name,
-          data: this.measure?.values,
-          borderColor: "#007ee7",
-        },
-        ],
+        datasets: this.measuresData,
         labels: this.dimensions?.values
       }
     });
+    console.log(this.chart)
   }
 
 }

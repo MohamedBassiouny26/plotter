@@ -51,7 +51,7 @@ const data = {
     Country: ["Egypt", "Germany", "USA", "England", "Italy", "Saudi Arabia"],
     Revenue: [9000, 10000, 7000, 80000, 3400, 5500],
     'Units sold': [1000, 2000, 2300, 12000, 20000, 5030],
-    Cost: [333.08, 7.07, 10.77, 194.76, 13.18, 143.3]
+    Cost: [333.08, 700.07, 100.77, 194.76, 130.18, 143.3]
 }
 
 
@@ -67,10 +67,13 @@ function getData(req, res) {
         {
             "name": dimension,
             "values": data[dimension]
-        }, {
-            "name": measures[0],
-            "values": data[measures[0]]
         }
     ]
+    measures.forEach(measure => {
+        result.push({
+            name: measure,
+            values: data[measure]
+        })
+    });
     res.json(result);
 }

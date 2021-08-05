@@ -1,11 +1,12 @@
 <div style="width:100%; " class="row">
   <div class="col-1 m-4 y-axis">
-    <p class="text-primary" style="margin: auto;">{{measure?.name}}</p>
+    <p class="" [style]="{'color':colors[i]}" *ngFor="let measure of measures; let i=index">
+      {{measure?.name}}</p>
   </div>
   <div class="col-11 " style="margin-left:100px ;">
     <canvas id="myChart" width="700" height="250" #mychart></canvas>
   </div>
 </div>
 <div class="x-axis">
-  <p class="text-danger">{{dimensions?.name}}</p>
+  <p>{{dimensions?.name}}</p>
 </div>
